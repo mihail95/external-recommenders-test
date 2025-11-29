@@ -51,9 +51,9 @@ class SklearnSentenceClassifier(Classifier):
                 else:
                     continue
 
-                assert (
-                    sentence.begin == annotation.begin and sentence.end == annotation.end
-                ), "Annotation should cover sentence fully!"
+                assert sentence.begin == annotation.begin and sentence.end == annotation.end, (
+                    "Annotation should cover sentence fully!"
+                )
 
                 label = getattr(annotation, feature)
 
@@ -65,7 +65,7 @@ class SklearnSentenceClassifier(Classifier):
 
         model = Pipeline([("vect", CountVectorizer()), ("tfidf", TfidfTransformer()), ("clf", MultinomialNB())])
         model.fit(sentences, targets)
-        logger.debug(f"Training finished for user [%s]", user_id)
+        logger.debug("Training finished for user [%s]", user_id)
 
         self._save_model(user_id, model)
 
@@ -131,7 +131,7 @@ class SklearnMentionDetector(Classifier):
 
         # model = Pipeline([("vect", CountVectorizer()), ("tfidf", TfidfTransformer()), ("clf", MultinomialNB())])
         # model.fit(sentences, targets)
-        logger.debug(f"Training finished for user [%s]", user_id)
+        logger.debug("Training finished for user [%s]", user_id)
 
         self._save_model(user_id, crf)
 
@@ -165,7 +165,7 @@ class SklearnMentionDetector(Classifier):
                 if begin is not None and end is not None:
                     if tag == "O" or (tag.startswith("B") and prev_tag.startswith("I")):
                         prediction = create_prediction(cas, layer, feature, begin, end, "X")
-                        cas.add_annotation(prediction)
+                        cas.add(prediction)
 
                 if tag.startswith("B"):
                     begin = token.begin

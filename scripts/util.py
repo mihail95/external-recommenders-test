@@ -24,8 +24,6 @@ from ariadne.constants import SENTENCE_TYPE
 
 
 def download_file(url: str, target_path: Path):
-    import ssl
-
     if target_path.exists():
         logging.info("File already exists: [%s]", str(target_path.resolve()))
         return
@@ -49,11 +47,10 @@ def write_sentence_documents(sentences: List[str], labels: List[str], path: Path
         cas_sentence = SentenceType(begin=begin, end=end)
         sentiment_annotation = SentimentType(begin=begin, end=end, value=label)
         begin = end + 1
-
-        cas.add_annotation(cas_sentence)
+        cas.add(cas_sentence)
 
         if labeled:
-            cas.add_annotation(sentiment_annotation)
+            cas.add(sentiment_annotation)
 
     cas.to_xmi(path, pretty_print=True)
 
