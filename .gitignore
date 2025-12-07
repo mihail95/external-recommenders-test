@@ -212,3 +212,4 @@ dmypy.json
 /models/*
 /cache
 .vscode
+/saved-models/

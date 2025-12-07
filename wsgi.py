@@ -21,22 +21,20 @@ from ariadne.demo.demo_string_feature import DemoStringFeatureRecommender
 from ariadne.demo.demo_list_types import DemoListTypesRecommender
 from ariadne.server import Server
 from ariadne.util import setup_logging
-from ariadne.contrib.rub_recommenders import DumbSentenceClassifier, DumbRelClassifier, DumbChainClassifier
+from ariadne.contrib.rub_recommenders import MetaphorClassifier
 
 setup_logging()
 
 server = Server()
 
-server.add_classifier("dumb_sent", DumbSentenceClassifier())
-server.add_classifier("dumb_rel", DumbRelClassifier())
-server.add_classifier("dumb_chain", DumbChainClassifier())
+server.add_classifier("met_rec", MetaphorClassifier())
 # server.add_classifier("spacy_ner", SpacyNerClassifier("en_core_web_sm"))
-server.add_classifier("demo_string_feature", DemoStringFeatureRecommender())
-server.add_classifier("demo_string_array_feature", DemoStringArrayFeatureRecommender())
-server.add_classifier("demo_link_feature", DemoLinkFeatureRecommender())
-server.add_classifier("demo_relation_layer", DemoRelationLayerRecommender())
-server.add_classifier("demo_multiple_features", DemoMultipleFeaturesRecommender())
-server.add_classifier("demo_list_types", DemoListTypesRecommender())
+# server.add_classifier("demo_string_feature", DemoStringFeatureRecommender())
+# server.add_classifier("demo_string_array_feature", DemoStringArrayFeatureRecommender())
+# server.add_classifier("demo_link_feature", DemoLinkFeatureRecommender())
+# server.add_classifier("demo_relation_layer", DemoRelationLayerRecommender())
+# server.add_classifier("demo_multiple_features", DemoMultipleFeaturesRecommender())
+# server.add_classifier("demo_list_types", DemoListTypesRecommender())
 
 # server.add_classifier("spacy_ner", SpacyNerClassifier("en_core_web_sm"))
 # server.add_classifier("spacy_pos", SpacyPosClassifier("en_core_web_sm"))
