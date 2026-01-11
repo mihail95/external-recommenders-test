@@ -49,7 +49,8 @@ dependencies = [
     "simalign~=0.4",
     "flair>=0.13.1",
     "transformers[torch]>=4.41.0",
-    "pip",  # Required for spacy model auto-download during tests
+    "pip",  # Required for spacy model auto-download during tests,
+    "pandas"
 ]
 
 [dependency-groups]
