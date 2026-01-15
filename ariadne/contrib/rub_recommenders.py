@@ -19,7 +19,7 @@ PUNCT_RE = re.compile(r"^(.+?)([.,!?;:])$")
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print("Using device:", DEVICE)
 
-MODEL_PATH = "saved-models/bert-base-multilingual-cased_condensed_sents_reddit_sermon_train"
+MODEL_PATH = "saved-models/paraphrase-multilingual-MiniLM-L12-v2_condensed_sents_vua_delib_reddit"
 
 print("=== Loading tokenizer/model at import time ===")
 tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
